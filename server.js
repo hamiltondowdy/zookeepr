@@ -15,7 +15,6 @@ function filterByQuery(query, animalsArray) {
       } else {
         personalityTraitsArray = query.personalityTraits;
       }
-      
       personalityTraitsArray.forEach(trait => {
         filteredResults = filteredResults.filter(
           animal => animal.personalityTraits.indexOf(trait) !== -1
