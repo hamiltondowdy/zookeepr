@@ -1,3 +1,5 @@
+app.use(express.static('public'));
+
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
@@ -83,6 +85,7 @@ app.get('/api/animals/:id', (req, res) => {
     }
   });
 
+
 app.post('/api/animals', (req, res) => {
 
     req.body.id = animals.length.toString();
@@ -97,4 +100,16 @@ app.post('/api/animals', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}`);
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/zookeepr-public/index.html'));
+});
+
+app.get('/animals', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+app.get('/zookeepers', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/zookeepers.html'));
 });
